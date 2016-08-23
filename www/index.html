@@ -7,47 +7,24 @@
 </head>
 <body>
   <h1>1min timer</h1>
-  <nav>
+  <nav class="buttons">
     <button id="button-start" class="button button-start">start</button>
     <button id="button-stop" class="button button-stop">stop</button>
     <button id="button-reset" class="button button-reset">reset</button>
   </nav>
   <p></p>
   <div id="display-timer" class="timer">--:--:-- --</div>
+  <script src="./Timer.js"></script>
   <script>
+    const timer = new Timer(10, 'display-timer')
+
     const start   = document.getElementById('button-start')
     const stop    = document.getElementById('button-stop')
     const reset   = document.getElementById('button-reset')
 
-    class Timer {
-      constructor(initial, displayId) {
-        this.initial = initial ? initial : 60
-        this.display = document.getElementById(displayId)
-        this.value = this.initial
-        this.render()
-      }
-      start() {}
-      stop() {}
-      reset() {}
-      render() {
-        var sec = this.value
-        // get hour value
-        const hour = Math.floor(sec / 3600)
-        sec -= 3600 * hour
-        //get min value
-        const min = Math.floor(sec / 60)
-        sec -= 60 * min
-        // get csec and sec value
-        const csec = Math.round(100 * (sec - Math.floor(sec)))
-        sec = Math.round(sec)
-        this.display.innerText = [hour, min, sec].join(":") + " " + csec
-      }
-    }
-
-    const timer = new Timer(60.3, 'display-timer')
-
-    start.addEventListener('click', timer.start)
-    stop.addEventListener('click', timer.stop)
+    start.addEventListener('click', () => timer.start()) // fix this context
+    stop.addEventListener('click', () => timer.stop()) // fix this context
+    reset.addEventListener('click', () => timer.reset()) // fix this context
   </script>
 </body>
 </html>

@@ -1,6 +1,12 @@
+.buttons {
+  text-align: center;
+}
 .button {
-  font-size: 2em;
+  font-size: 1em;
+  margin: .25em;
 }
 .timer {
-  font-size: 100px;
+  text-align: center;
+  font-size: 60px;
+  font-family: sans-serif;
 }
