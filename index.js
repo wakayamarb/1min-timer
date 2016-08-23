@@ -12,7 +12,8 @@ app.on('ready', function(){
     mainWindow = new BrowserWindow({
         width: 600,
         height: 300,
-        title: "1min timer"
+        title: "1min timer",
+        icon: __dirname + "/icon.png"
     });
     mainWindow.loadURL('file://' + __dirname + '/www/index.html');
     mainWindow.on('close', function(){
