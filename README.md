@@ -1,9 +1,7 @@
 # 1min timer, electron-app sample
 
-## bootstrap
-```
-$ git clone
-```
+[![Build Status](https://travis-ci.org/wakayamarb/1min-timer.svg?branch=master)](https://travis-ci.org/wakayamarb/1min-timer)
+
 
 ## preview
 ```
