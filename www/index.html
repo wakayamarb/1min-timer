@@ -20,18 +20,18 @@
 
   <script src="./Timer.js"></script>
   <script>
-    // grab DOM content
-    const start   = document.getElementById('button-start')
-    const stop    = document.getElementById('button-stop')
-    const reset   = document.getElementById('button-reset')
-
-    // make timer instance
-    const timer = new Timer(60, 'display-timer', () => alert("finish"))
-
-    // Bind timer model to view
-    start.addEventListener('click', () => timer.start()) // fix `this` context
-    stop.addEventListener('click', () => timer.stop())   // fix `this` context
-    reset.addEventListener('click', () => timer.reset()) // fix `this` context
+    // // grab DOM content
+    // const start   = document.getElementById('button-start')
+    // const stop    = document.getElementById('button-stop')
+    // const reset   = document.getElementById('button-reset')
+    //
+    // // make timer instance
+    // const timer = new Timer(60, 'display-timer', () => alert("finish"))
+    //
+    // // Bind timer model to view
+    // start.addEventListener('click', () => timer.start()) // fix `this` context
+    // stop.addEventListener('click', () => timer.stop())   // fix `this` context
+    // reset.addEventListener('click', () => timer.reset()) // fix `this` context
   </script>
 </body>
 </html>

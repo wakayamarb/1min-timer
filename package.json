@@ -17,9 +17,6 @@
   "devDependencies": {
     "asar": "^0.12.2",
     "electron-packager": "^7.7.0",
-    "electron-prebuilt": "^1.2.7",
-    "gulp": "^3.9.1",
-    "gulp-iconutil": "^1.2.0",
-    "gulp-sketch": "^1.0.3"
+    "electron-prebuilt": "^1.2.7"
   }
 }
