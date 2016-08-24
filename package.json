@@ -6,10 +6,10 @@
   "scripts": {
     "start": "./node_modules/.bin/electron ./index.js",
     "asar": "./node_modules/.bin/asar pack . ./build/app.asar --unpack-dir \"{build}\"",
-    "build-Mac": "./node_modules/.bin/electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite --icon=icon.png",
-    "build-Win": "./node_modules/.bin/electron-packager . 1min --out=./build --platform=win32 --arch=x64 --overwrite",
+    "build-darwin": "./node_modules/.bin/electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite --icon=icon.png",
+    "build-win32": "./node_modules/.bin/electron-packager . 1min --out=./build --platform=win32 --arch=x64 --overwrite",
     "build-linux": "./node_modules/.bin/electron-packager . 1min --out=./build --platform=linux --arch=x64 --overwrite",
-    "build": "npm run build-Mac; npm run build-linux",
+    "build": "npm run build-darwin; npm run build-linux",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "KamataRyo",
