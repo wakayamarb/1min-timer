@@ -31,5 +31,6 @@ env:
   global:
   - NODE_VERSION_TO_DEPLOY: 5
   - BUILD_PATH: "build"
-  - GH_REF: github.com/wakayamarb/1min-timer.git
+  - WEBVIEW_PATH: "www"
+  - GH_REF: "github.com/wakayamarb/1min-timer.git"
   - secure: "FIqTzitlegJRmg7d7j87ho6jKCg94keejNbrP6zorJxkft+ITW2mzAdnN0zGZtTwCmRiXUW61KE94VI+NT4ewTkJkoZ95K9sL88PlnK0bYQiiLZoU6uHiz9yX9cISwYxl8my+oujwev5JOH5eCLVDroFCZIXoP/73nPzX5pC1n6h52Hs/lsexxvkYRdWmRCewA6XCsGqY3sheEQD5CQmRok5nkm6hesCB/x4A0QsQ/B6U8izuobN9eGFKJU88Nr3xWFnxs2IqXHe0rbXfE33SF/qJMhni6fCiLLml4F/SBDbfjCkSrVY2uIV2kOGfewqQIm2E2wVvm6iIpqBRopb9QvDg2tqrVPVWuGdIxw/J+SNzwJmqqBuPy4YzuXDom7TZ1xsQrPuYAu0MLykmLFrWjDmmSPXVAnDJapd/AET8Qm8oXHpD+Qmxl55qKea+GewdALapQFqIXW7C5zDRWmBuCYnX59abslicTW60R5in+Y4C9COPEH6I/WAVuqNdaDVDOYaiDOtylEkEtVnTi7KzOcZSO5pBbOXQrZxOORWEgJ6NVIjW14oop+ukFMaPFMc7OIi4j/rDZ8Q7pAtWBrAZJ/D+Kt1H01pBAIlxIAvLmvaKDRtRPCZG1SHmtCUL8tihUnVAJSnyzS1FphmggO32Te+T+oyZgES9Voibbg4/zU="
