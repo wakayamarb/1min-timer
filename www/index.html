@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>1min Timer</title>
+  <title>1 Minute Timer</title>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <h1>1min timer</h1>
+  <h1>1 Minute Timer</h1>
   <nav class="buttons">
     <button id="button-start" class="button button-start">start</button>
     <button id="button-stop" class="button button-stop">stop</button>
     <button id="button-reset" class="button button-reset">reset</button>
   </nav>
-  <p></p>
-  <div id="display-timer" class="timer">--:--:-- --</div>
+  <p>
+    <div id="display-timer" class="timer"></div>
+  </p>
+  
   <script src="./Timer.js"></script>
   <script>
     const timer = new Timer(60, 'display-timer')
@@ -22,9 +24,9 @@
     const stop    = document.getElementById('button-stop')
     const reset   = document.getElementById('button-reset')
 
-    start.addEventListener('click', () => timer.start()) // fix this context
-    stop.addEventListener('click', () => timer.stop()) // fix this context
-    reset.addEventListener('click', () => timer.reset()) // fix this context
+    start.addEventListener('click', () => timer.start()) // fix `this` context
+    stop.addEventListener('click', () => timer.stop())   // fix `this` context
+    reset.addEventListener('click', () => timer.reset()) // fix `this` context
   </script>
 </body>
 </html>
