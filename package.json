@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/electron ./index.js",
     "asar": "./node_modules/.bin/asar pack . ./build/app.asar --unpack-dir \"{build}\"",
-    "build-darwin": "./node_modules/.bin/electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite --icon=icon.png",
+    "build-darwin": "./node_modules/.bin/electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite",
     "build-win32": "./node_modules/.bin/electron-packager . 1min --out=./build --platform=win32 --arch=x64 --overwrite",
     "build-linux": "./node_modules/.bin/electron-packager . 1min --out=./build --platform=linux --arch=x64 --overwrite",
     "build": "npm run build-darwin; npm run build-linux",
@@ -17,6 +17,9 @@
   "devDependencies": {
     "asar": "^0.12.2",
     "electron-packager": "^7.7.0",
-    "electron-prebuilt": "^1.2.7"
+    "electron-prebuilt": "^1.2.7",
+    "gulp": "^3.9.1",
+    "gulp-iconutil": "^1.2.0",
+    "gulp-sketch": "^1.0.3"
   }
 }
