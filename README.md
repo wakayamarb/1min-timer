@@ -3,6 +3,17 @@
 [![Build Status](https://travis-ci.org/wakayamarb/1min-timer.svg?branch=master)](https://travis-ci.org/wakayamarb/1min-timer)
 
 
+## TODOs
+
+- Automate icon generation
+- SASSify
+- test build on Windows
+- test and node_integration sample at renderProcess
+- Add lint tools
+- Add unit tests
+- Add E2E tests
+- test
+
 webView: https://wakayamarb.github.io/1min-timer/
 
 ## bootstrap
