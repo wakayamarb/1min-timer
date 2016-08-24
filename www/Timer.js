@@ -1,4 +1,5 @@
 Timer = class Timer {
+
   constructor(initial, displayId, callback) {
     this.initial = initial ? Math.floor(initial) : 60
     this.display = document.getElementById(displayId)
@@ -8,10 +9,12 @@ Timer = class Timer {
   }
 
   start() {
+    // start can be use as reset when finished
     if (this.value <= 0) {
       this.reset()
     }
 
+    // prevent duplicate call
     if (this.counting) {
       return
     }
@@ -29,7 +32,8 @@ Timer = class Timer {
         if (this.value <= 0) {
           this.stop()
           if (typeof this.callback == 'function') {
-            this.callback()
+            // I want to observe render() finished in other word display.innerText changed before do callback, but not yet
+            setTimeout(this.callback, 50)
           }
         }
       },

@@ -15,10 +15,10 @@
   <p>
     <div id="display-timer" class="timer"></div>
   </p>
-  
+
   <script src="./Timer.js"></script>
   <script>
-    const timer = new Timer(60, 'display-timer')
+    const timer = new Timer(5, 'display-timer', () => alert("finish"))
 
     const start   = document.getElementById('button-start')
     const stop    = document.getElementById('button-stop')
