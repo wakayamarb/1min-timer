@@ -1,0 +1,13 @@
+.buttons {
+  text-align: center;
+}
+.button {
+  text-transform: uppercase;
+  font-size: 1em;
+  margin: .25em;
+}
+.timer {
+  text-align: center;
+  font-size: 60px;
+  font-family: sans-serif;
+}

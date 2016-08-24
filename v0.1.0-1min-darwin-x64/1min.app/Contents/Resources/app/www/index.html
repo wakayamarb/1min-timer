@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>1 Minute Timer</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <h1>1 Minute Timer</h1>
+  <nav class="buttons">
+    <button id="button-start" class="button button-start">start</button>
+    <button id="button-stop" class="button button-stop">stop</button>
+    <button id="button-reset" class="button button-reset">reset</button>
+  </nav>
+  <p>
+    <div id="display-timer" class="timer"></div>
+  </p>
+
+  <script src="./Timer.js"></script>
+  <script>
+    // grab DOM content
+    const start   = document.getElementById('button-start')
+    const stop    = document.getElementById('button-stop')
+    const reset   = document.getElementById('button-reset')
+
+    // make timer instance
+    const timer = new Timer(60, 'display-timer', () => alert("finish"))
+
+    // Bind timer model to view
+    start.addEventListener('click', () => timer.start()) // fix `this` context
+    stop.addEventListener('click', () => timer.stop())   // fix `this` context
+    reset.addEventListener('click', () => timer.reset()) // fix `this` context
+  </script>
+</body>
+</html>
