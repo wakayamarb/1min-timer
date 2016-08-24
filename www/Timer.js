@@ -5,6 +5,7 @@
 // - 1分タイマーのロジックはTimerクラスとして実装する
 // - Timerクラスは、カウントダウンする秒数がインスタンス化の際に設定される
 // - Timerクラスは、更新するDOM Elementのidをインスタンス化の際に受けつける
+// - Timerクラスは、カウントダウン終了時の処理をコールバックとしてインスタンス化の際に受け付ける
 // - Timerクラスは、動作を制御するstart, stop, resetのメソッドを持つ
 // - Timerクラスは、ビューを更新するrenderメソッドを持つ
 // - Timerクラスは、待機状態とカウントダウン状態の2つの状態を持つ
@@ -14,9 +15,10 @@
 
 const Timer = class Timer {
 
-  constructor(initial, displayId) {
+  constructor(initial, displayId, callback) {
     // this.initial = initial ? Math.floor(initial) : 60
     // this.display = document.getElementById(displayId)
+    // this.callback = callback
     // this.counting = false
     // this.reset()
   }
@@ -40,7 +42,7 @@ const Timer = class Timer {
     //     this.value -= 1
     //     this.render()
     //     if (this.value <= 0) {
-    //       this.stop()
+    //       this.stop(callback)
     //       }
     //     }
     //   },
@@ -49,10 +51,16 @@ const Timer = class Timer {
   }
 
   // stop timer
-  stop() {
+  stop(callback) {
     // // timer manipulation
     // clearInterval(this.timerId)
     // this.counting = false
+    //
+    // if (callback) {
+    //       if (typeof this.callback == 'function') {
+    //         this.callback()
+    //       }
+    // }
   }
 
   // reset model
