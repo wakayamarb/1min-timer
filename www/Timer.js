@@ -1,5 +1,17 @@
 
 // Timer class provide DOM content renderer and model of 1 second decrements.
+
+// クラス設計
+// - 1分タイマーのロジックはTimerクラスとして実装する
+// - Timerクラスは、カウントダウンする秒数がインスタンス化の際に設定される
+// - Timerクラスは、更新するDOM Elementのidをインスタンス化の際に受けつける
+// - Timerクラスは、動作を制御するstart, stop, resetのメソッドを持つ
+// - Timerクラスは、ビューを更新するrenderメソッドを持つ
+// - Timerクラスは、待機状態とカウントダウン状態の2つの状態を持つ
+// - startメソッドとstopメソッドはそれぞれ待機状態とカウントダウン状態の遷移を実行する
+// - resetメソッドは、待機状態への遷移を実行し、タイマーの秒数を初期値に再度設定する
+// - renderメソッドは、DOM ElementのinnerTextプロパティの書き換えを実行する
+
 const Timer = class Timer {
 
   constructor(initial, displayId) {
@@ -52,8 +64,8 @@ const Timer = class Timer {
   }
 
   // render dom content
-  render(value) {
-    // var sec = value ? value : this.value
+  render() {
+    // var sec = this.value
     //
     // // get hour value
     // var hour = Math.floor(sec / 3600)
