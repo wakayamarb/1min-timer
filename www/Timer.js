@@ -1,4 +1,6 @@
-Timer = class Timer {
+
+// Timer class provide DOM content renderer and model of 1 second decrements.
+const Timer = class Timer {
 
   constructor(initial, displayId, callback) {
     this.initial = initial ? Math.floor(initial) : 60
@@ -8,6 +10,7 @@ Timer = class Timer {
     this.reset()
   }
 
+  // start or restart timer
   start() {
     // start can be use as reset when finished
     if (this.value <= 0) {
@@ -19,12 +22,13 @@ Timer = class Timer {
       return
     }
 
-    // set class 'started'
+    // set class attribute named 'started'
     const classes = (this.display.getAttribute('class')).split(' ')
       .filter(e => e != 'started')
     classes.push('started')
     this.display.setAttribute('class',classes.join(' '))
 
+    // timer manipulation
     this.timerId = setInterval(
       () => {
         this.value -= 1
@@ -42,15 +46,19 @@ Timer = class Timer {
     this.counting = true
   }
 
+  // stop timer
   stop() {
     // remove class 'started'
     const classes = (this.display.getAttribute('class')).split(' ')
       .filter(e => e != 'started')
     this.display.setAttribute('class',classes.join(' '))
+
+    // timer manipulation
     clearInterval(this.timerId)
     this.counting = false
   }
 
+  // reset model
   reset() {
     this.stop()
     this.timerId = false
@@ -58,6 +66,7 @@ Timer = class Timer {
     this.render()
   }
 
+  // render dom content
   render(value) {
     var sec = value ? value : this.value
 
