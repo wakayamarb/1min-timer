@@ -16,6 +16,8 @@ branches:
 
 before_script:
   - sudo apt-get -y -qq install wine
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
   - npm run build
 
 script:
