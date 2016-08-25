@@ -1,3 +1,7 @@
+/**
+ * Mocha Unit test cases
+ */
+
 import Timer from '../www/Timer'
 import should from 'should'
 
