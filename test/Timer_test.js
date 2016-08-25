@@ -8,7 +8,7 @@ const mockDisplay = {
   getAttribute: (attr) => { return mockAttributes[attr] ? mockAttributes[attr] : '' },
   setAttribute: (attr, value) => { mockAttributes[attr] = value },
 }
-const INITIAL_VALUE = 10
+const INITIAL_VALUE = 10 // should be below 60
 const CLASS_COUNTING = 'started'
 const timer = new Timer(INITIAL_VALUE, CLASS_COUNTING , mockDisplay)
 
@@ -24,6 +24,7 @@ describe('Test of start', () => {
     setTimeout(() => {
       timer.value.should.be.below(INITIAL_VALUE)
       mockAttributes.class.should.equal(CLASS_COUNTING)
+      mockDisplay.innerText.should.not.equal('00:00:' + INITIAL_VALUE)
       done()
     }, 1200)
   })
@@ -35,9 +36,11 @@ describe('Test of stop', () => {
     setTimeout(() => {
       timer.stop()
       const valueAtStopped = timer.value
+      const displayAtStopped = mockDisplay.innerText
       setTimeout(() => {
         timer.value.should.equal(valueAtStopped)
         mockAttributes.class.should.not.equal(CLASS_COUNTING)
+        mockDisplay.innerText.should.equal(displayAtStopped)
         done()
       }, 1200)
     }, 1200)
@@ -50,11 +53,13 @@ describe('Test of restart', () => {
     setTimeout(() => {
       timer.stop()
       const valueAtStopped = timer.value
+      const displayAtStopped = mockDisplay.innerText
       setTimeout(() => {
         timer.start()
         setTimeout(() => {
           timer.value.should.be.below(valueAtStopped)
           mockAttributes.class.should.equal(CLASS_COUNTING)
+          mockDisplay.innerText.should.not.equal(displayAtStopped)
           done()
         }, 1200)
       }, 1200)
@@ -68,6 +73,7 @@ describe('Test of reset', () => {
     setTimeout(() => {
       timer.reset()
       timer.value.should.equal(INITIAL_VALUE)
+      mockDisplay.innerText.should.equal('00:00:' + INITIAL_VALUE)
       done()
     }, 1200)
   })

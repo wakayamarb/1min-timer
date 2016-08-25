@@ -25,6 +25,7 @@
     "gulp": "^3.9.1",
     "gulp-iconutil": "^1.2.0",
     "gulp-sketch": "^1.0.3",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "should": "^11.1.0"
   }
 }
