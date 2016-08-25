@@ -1,4 +1,4 @@
-sudo: required # for wine
+# sudo: required # for wine
 language: node_js
 node_js:
 - 6
@@ -15,20 +15,16 @@ branches:
   - "/^v?[0-9](\\.[0-9])*/"
 
 before_script:
-  # for win32 app build
   # - sudo apt-get -y -qq install wine
-  # - export DISPLAY=:99.0
-  # - sh -e /etc/init.d/xvfb start
-  - npm run build
-  # get chrome
-  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-  - sudo apt-get install google-chrome-stable
+  # for wine and protractor
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
   # update webdriver
   - npm run webdriver-update
 
 script:
   - npm test
+  - npm run build
   - ls build
 
 after_success:
