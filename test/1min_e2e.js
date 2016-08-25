@@ -6,16 +6,16 @@ import should from 'should'
 should()
 
 /**
- * Promise object only do setTimeout
- * @param {[Object]} value object passed
+ * Promise only setTimeout
  * @return {[Promise]}
  */
-const promiseTimeout = () => new Promise((fulfilled) => {
-  setTimeout(() => { fulfilled() }, 1200)
-})
+const getPromisedTimeout = (duration) => {
+  return () => new Promise((fulfilled) => {
+    setTimeout(() => {fulfilled()}, duration)
+  })
+}
 
 /**
- * [getTimerText description]
  * @type {[Promise]}
  */
 const getTimerText = element(by.id('display-timer')).getText
@@ -34,7 +34,7 @@ const clickReset = element(by.id('button-reset')).click
 /**
  * Reset state before each test
  */
-beforeEach(done => { clickReset().then(done)})
+beforeEach(done => {clickReset().then(done)})
 
 /**
  * A test suit
@@ -43,7 +43,7 @@ describe('Title ', () => {
   it('should show `1MINUTE TIMER`', () => {
 
     element(by.className('title')).getText()
-      .then((title) => {
+      .then(title => {
         title.should.equal('1 MINUTE TIMER')
       })
   })
@@ -57,9 +57,9 @@ describe('Start Button', () => {
     let prevTimerText = ''
 
     return clickStart()
-      .then(getTimerText).then((text) => {prevTimerText = text})
-      .then(promiseTimeout)
-      .then(getTimerTextAgain).then((nextTimerText) => {
+      .then(getTimerText).then(text => {prevTimerText = text})
+      .then(getPromisedTimeout(1200))
+      .then(getTimerTextAgain).then(nextTimerText => {
         nextTimerText.should.not.equal(prevTimerText)
       })
   })
@@ -74,9 +74,9 @@ describe('Stop Button', () => {
 
     return clickStart()
       .then(clickStop)
-      .then(getTimerText).then((text) => {prevTimerText = text})
-      .then(promiseTimeout)
-      .then(getTimerTextAgain).then((nextTimerText) => {
+      .then(getTimerText).then(text => {prevTimerText = text})
+      .then(getPromisedTimeout(1200))
+      .then(getTimerTextAgain).then(nextTimerText => {
         nextTimerText.should.equal(prevTimerText)
       })
   })
@@ -85,40 +85,36 @@ describe('Stop Button', () => {
 /**
  * A test suit
  */
-describe('Stop and start Button', () => {
-  it('should restart timer', done => {
+describe('Buttons', () => {
+  it('should restart timer', () => {
     let prevTimerText = ''
 
-    clickStart()
+    return clickStart()
       .then(clickStop)
       .then(clickStart)
-      .then(getTimerText).then((text) => {prevTimerText = text})
-      .then(promiseTimeout)
-      .then(getTimerTextAgain).then((nextTimerText) => {
+      .then(getTimerText).then(text => {prevTimerText = text})
+      .then(getPromisedTimeout(1200))
+      .then(getTimerTextAgain).then(nextTimerText => {
         nextTimerText.should.not.equal(prevTimerText)
-        done()
+      })
+  })
+
+  it('should restart timer', () => {
+    let initialTimerText = ''
+
+    return getTimerText().then( text => {initialTimerText = text})
+      .then(clickStart)
+      .then(getPromisedTimeout(1200))
+      .then(clickReset)
+      .then(getTimerTextAgain).then(nextTimerText => {
+        nextTimerText.should.equal(initialTimerText)
       })
   })
 })
 
 /**
- * A test suit
+ * Close the renderer
  */
-describe('start and reset Button', () => {
-  it('should restart timer', done => {
-    let initialTimerText = ''
-
-    getTimerText().then((text) => {initialTimerText = text})
-      .then(clickStart)
-      .then(promiseTimeout)
-      .then(clickReset)
-      .then(getTimerTextAgain).then((nextTimerText) => {
-        nextTimerText.should.equal(initialTimerText)
-        done()
-      })
-  })
-})
-
 after(() => {
   browser.driver.close()
 })

@@ -23,9 +23,9 @@ before_script:
   - npm run webdriver-update
 
 script:
+  - npm run lint
   - npm test
   - npm run build
-  - ls build
 
 after_success:
 - curl https://raw.githubusercontent.com/KamataRyo/travis-sctipts-collection/master/deploy-electron-apps.sh | bash

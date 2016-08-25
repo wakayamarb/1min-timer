@@ -1,6 +1,6 @@
-var gulp     = require('gulp');
-var sketch   = require('gulp-sketch');
-var iconutil = require('gulp-iconutil');
+import gulp     from 'gulp'
+import sketch   from 'gulp-sketch'
+import iconutil from 'gulp-iconutil'
 
 gulp.task('icons', () => {
   gulp.src('images/icon.sketch')
@@ -10,5 +10,5 @@ gulp.task('icons', () => {
       scales: '1.0,2.0'
     }))
     .pipe(iconutil('icon.icns'))
-    .pipe(gulp.dest('./images'));
-});
+    .pipe(gulp.dest('./images'))
+})

@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "$(npm bin)/electron ./main.js",
-    "build-darwin": "$(npm bin)/electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite --icon=images/app.icns",
+    "build-darwin": "$(npm bin)/electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite --icon=images/icon.icns",
     "build-win32": "$(npm bin)/electron-packager . 1min --out=./build --platform=win32 --arch=x64 --overwrite",
     "build-linux": "$(npm bin)/electron-packager . 1min --out=./build --platform=linux --arch=x64 --overwrite",
     "build": "npm run build-darwin; npm run build-linux",
@@ -13,7 +13,7 @@
     "icons": "echo 'This script depends on MacOS with sketch' && $(npm bin)/gulp icons",
     "unit-test": "$(npm bin)/mocha --compilers js:babel-register test/**/*_unit.js",
     "webdriver-update": "$(npm bin)/webdriver-manager update",
-    "e2e-test": "$(npm bin)/protractor conf.js;",
+    "e2e-test": "$(npm bin)/protractor protractor.conf.js;",
     "test": "npm run unit-test && npm run e2e-test"
   },
   "author": "KamataRyo",
