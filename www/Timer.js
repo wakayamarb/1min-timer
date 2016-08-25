@@ -6,29 +6,38 @@ const Timer = class Timer {
   /**
    * constructor
    * @type    {[Function]}
-   * @param   {[Number]}    initial    Optional. Cooutdown inital value, default=60
-   * @param   {[String]}    displayId  Optional. DOM Element ID which timer will be rendered, default="display-timer"
-   * @param   {[Function]}  callback   Nullable. Callback function done when timer count finished
+   * @param   {[Number]}     initial        Optional. Cooutdown inital value, default=60
+   * @param   {[String]}     classCounting  Class attached when timer counting
+   * @param   {[DOMElement]} display        Nullable. DOM Element which timer will be rendered
+   * @param   {[Function]}   callback       Nullable. Callback function done when timer count finished
    * @return  {[Function]}
    */
-  constructor(initial, displayId, callback) {
+  constructor(initial, classCounting , display, callback) {
     // Class member initialization
-
     /**
      * Cooutdown inital value
      * @type {[Number]}
      */
     this.initial = initial ? Math.floor(initial) : 60
+
+    /**
+     * Class attached when timer counting
+     * @type {String}
+     */
+    this.classCounting = classCounting ? classCounting : ''
+
     /**
      * DOM Element which timer will be rendered
      * @type {DOM Element}
      */
-    this.display = displayId ? document.getElementById(displayId) : 'display-timer'
+    this.display = display
+
     /**
      * Callback function done when timer count finished
      * @type {Function}
      */
     this.callback = callback
+
     /**
      * Inner statement whether counting down or not
      * @type {Boolean}
@@ -47,7 +56,7 @@ const Timer = class Timer {
   _provideClass(element, className) {
     const classNames = (element.getAttribute('class'))
       .split(' ')
-      .filter(e => e != className) // remove class if exists
+      .filter(e => (e != className) && (e != '')) // remove class if exists
     classNames.push(className) // push again
     element.setAttribute('class',classNames.join(' '))
   }
@@ -60,7 +69,7 @@ const Timer = class Timer {
    */
   _removeClass(element, className) {
     const classNames = (element.getAttribute('class')).split(' ')
-      .filter(e => e != className) //remove class if exists
+      .filter(e => (e != className) && (e != '')) //remove class if exists
     element.setAttribute('class',classNames.join(' '))
   }
 
@@ -79,7 +88,7 @@ const Timer = class Timer {
       return
     }
 
-    this._provideClass(this.display, 'started')
+    this._provideClass(this.display, this.classCounting)
 
     // timer manipulation
     this.timerId = setInterval(
@@ -109,7 +118,7 @@ const Timer = class Timer {
    * @return {[void]}
    */
   stop() {
-    this._removeClass(this.display, 'started')
+    this._removeClass(this.display, this.classCounting)
 
     // timer manipulation
     clearInterval(this.timerId)
@@ -153,7 +162,6 @@ const Timer = class Timer {
   }
 }
 
-// CommonJS style export
 if (module) {
-  module.exports(Timer)
+  module.exports = Timer
 }

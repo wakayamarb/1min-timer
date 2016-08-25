@@ -15,16 +15,17 @@
     </nav>
     <p id="display-timer" class="timer"></p>
   </main>
-  
+
   <script src="./Timer.js"></script>
   <script>
     // grab DOM content
     const start   = document.getElementById('button-start')
     const stop    = document.getElementById('button-stop')
     const reset   = document.getElementById('button-reset')
+    const display = document.getElementById('display-timer')
 
     // make timer instance
-    const timer = new Timer(60, 'display-timer', () => alert("finish"))
+    const timer = new Timer(60, 'started', display, () => alert("finish"))
 
     // Bind timer model to view
     start.addEventListener('click', () => timer.start()) // fix `this` context
