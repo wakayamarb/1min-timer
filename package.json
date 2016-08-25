@@ -11,7 +11,7 @@
     "build": "npm run build-darwin; npm run build-linux",
     "lint": "$(npm bin)/eslint -c './.eslintrc.json' ./",
     "icons": "echo 'This script depends on MacOS with sketch' && $(npm bin)/gulp icons",
-    "unit-test": "$(npm bin)/mocha --compilers js:espower-babel/guess test/**/*_unit.js",
+    "unit-test": "$(npm bin)/mocha --compilers js:babel-register test/**/*_unit.js",
     "webdriver-update": "$(npm bin)/webdriver-manager update",
     "e2e-test": "$(npm bin)/protractor conf.js;",
     "test": "npm run unit-test && npm run e2e-test"
@@ -21,11 +21,12 @@
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-preset-es2015": "^6.14.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-register": "^6.7.2",
     "chromedriver": "^2.23.1",
     "electron-packager": "^7.7.0",
     "electron-prebuilt": "^1.2.7",
     "eslint": "^3.3.1",
-    "espower-babel": "^4.0.3",
     "gulp": "^3.9.1",
     "gulp-iconutil": "^1.2.0",
     "gulp-sketch": "^1.0.3",
