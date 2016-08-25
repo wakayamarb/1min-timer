@@ -1,5 +1,5 @@
 import Timer from '../www/Timer'
-import { should } from 'chai'
+import should from 'should'
 
 should()
 

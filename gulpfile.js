@@ -9,7 +9,6 @@ gulp.task('icons', () => {
       formats: 'png',
       scales: '1.0,2.0'
     }))
-    .pipe(gulp.dest('icons/'))
-    .pipe(iconutil('app.icns'))
-    .pipe(gulp.dest('icons/'));
+    .pipe(iconutil('icon.icns'))
+    .pipe(gulp.dest('./images'));
 });

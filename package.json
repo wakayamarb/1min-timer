@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "$(npm bin)/electron ./index.js",
-    "build-darwin": "$(npm bin)/electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite",
+    "build-darwin": "$(npm bin)/electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite --icon=images/app.icns",
     "build-win32": "$(npm bin)/electron-packager . 1min --out=./build --platform=win32 --arch=x64 --overwrite",
     "build-linux": "$(npm bin)/electron-packager . 1min --out=./build --platform=linux --arch=x64 --overwrite",
     "build": "npm run build-darwin; npm run build-linux",
     "lint": "$(npm bin)/eslint -c './.eslintrc.json' ./",
+    "icons": "echo 'This script depends on MacOS with sketch' && $(npm bin)/gulp icons",
     "test": "$(npm bin)/mocha --compilers js:espower-babel/guess test/**/*.js"
   },
   "author": "KamataRyo",
@@ -17,7 +18,6 @@
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-preset-es2015": "^6.14.0",
-    "chai": "^3.5.0",
     "electron-packager": "^7.7.0",
     "electron-prebuilt": "^1.2.7",
     "eslint": "^3.3.1",
