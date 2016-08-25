@@ -1,4 +1,3 @@
-'use strict';
 /**
  * Main Process
  * - GUI (renderer process)
