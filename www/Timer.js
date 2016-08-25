@@ -1,16 +1,74 @@
-
-// Timer class provide DOM content renderer and model of 1 second decrements.
+/**
+ * Timer class provide DOM content renderer and model of 1 second decrements.
+ * @type {[Function]}
+ */
 const Timer = class Timer {
 
+  /**
+   * constructor
+   * @type    {[Function]}
+   * @param   {[Number]}    initial    Optional. Cooutdown inital value, default=60
+   * @param   {[String]}    displayId  Optional. DOM Element ID which timer will be rendered, default="display-timer"
+   * @param   {[Function]}  callback   Nullable. Callback function done when timer count finished
+   * @return  {[Function]}
+   */
   constructor(initial, displayId, callback) {
+    // Class member initialization
+
+    /**
+     * Cooutdown inital value
+     * @type {[Number]}
+     */
     this.initial = initial ? Math.floor(initial) : 60
-    this.display = document.getElementById(displayId)
+    /**
+     * DOM Element which timer will be rendered
+     * @type {DOM Element}
+     */
+    this.display = displayId ? document.getElementById(displayId) : 'display-timer'
+    /**
+     * Callback function done when timer count finished
+     * @type {Function}
+     */
     this.callback = callback
+    /**
+     * Inner statement whether counting down or not
+     * @type {Boolean}
+     */
     this.counting = false
+
     this.reset()
   }
 
-  // start or restart timer
+  /**
+   * Supportive function to provide a class to an element
+   * @param {[DOMElement]} element DOM Element which is provided a class.
+   * @param {[String]}     className Providing class name
+   * @return {[void]}
+   */
+  _provideClass(element, className) {
+    const classNames = (element.getAttribute('class'))
+      .split(' ')
+      .filter(e => e != className) // remove class if exists
+    classNames.push(className) // push again
+    element.setAttribute('class',classNames.join(' '))
+  }
+
+  /**
+   * Supportive function to remove a class from an element
+   * @param  {[type]} element    element DOM Element which is got rid of a class.
+   * @param  {[type]} className removing class name
+   * @return {[void]}
+   */
+  _removeClass(element, className) {
+    const classNames = (element.getAttribute('class')).split(' ')
+      .filter(e => e != className) //remove class if exists
+    element.setAttribute('class',classNames.join(' '))
+  }
+
+  /**
+   * start or restart timer
+   * @return {[void]}
+   */
   start() {
     // start can be use as reset when finished
     if (this.value <= 0) {
@@ -22,52 +80,63 @@ const Timer = class Timer {
       return
     }
 
-    // set class attribute named 'started'
-    const classes = (this.display.getAttribute('class')).split(' ')
-      .filter(e => e != 'started')
-    classes.push('started')
-    this.display.setAttribute('class',classes.join(' '))
+    this._provideClass(this.display, 'started')
 
     // timer manipulation
     this.timerId = setInterval(
       () => {
-        this.value -= 1
+        this.value -= 1 // timer decrement
         this.render()
+        // detect timer finish
         if (this.value <= 0) {
           this.stop()
           if (typeof this.callback == 'function') {
-            // I want to observe render() finished in other word display.innerText changed before do callback, but not yet
+            // TODO: I want to observe render() finished before do callback,
+            // in other word display.innerText changed.
+            // but not yet.
             setTimeout(this.callback, 50)
           }
         }
       },
-      1000
+      1000 // 1sec.
     )
+
+    // statement swich
     this.counting = true
   }
 
-  // stop timer
-  stop() {
-    // remove class 'started'
-    const classes = (this.display.getAttribute('class')).split(' ')
-      .filter(e => e != 'started')
-    this.display.setAttribute('class',classes.join(' '))
+  /**
+   * stop timer
+   * @return {[void]}
+   */
+   stop() {
+     this._removeClass(this.display, 'started')
 
     // timer manipulation
     clearInterval(this.timerId)
+
+    // statement swich
     this.counting = false
   }
 
-  // reset model
+  /**
+   * reset timer data model
+   * @return {[void]}
+   */
   reset() {
     this.stop()
     this.timerId = false
+    // reset display
     this.value = this.initial
     this.render()
   }
 
-  // render dom content
-  render(value) {
+  /**
+   * render timer value to view
+   * @param  {[Number]} Optional. value remaining timer value
+   * @return {[void]}
+   */
+   render(value) {
     var sec = value ? value : this.value
 
     // get hour value

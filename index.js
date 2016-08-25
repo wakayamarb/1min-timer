@@ -1,7 +1,9 @@
 'use strict';
+/**
+ * Main Process
+ * - GUI (renderer process)
+ */
 
-// Main Process
-// - GUI (renderer process)
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
