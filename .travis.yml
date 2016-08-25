@@ -1,4 +1,4 @@
-# sudo: required # for wine
+sudo: required # for wine
 language: node_js
 node_js:
 - 6
@@ -23,7 +23,6 @@ before_script:
   # get chrome
   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
   - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-  - sudo apt-get update
   - sudo apt-get install google-chrome-stable
   # update webdriver
   - npm run webdriver-update
