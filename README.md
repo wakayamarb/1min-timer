@@ -1,7 +1,6 @@
 # 1min timer, electron-app sample
 
 [![Build Status](https://travis-ci.org/wakayamarb/1min-timer.svg?branch=master)](https://travis-ci.org/wakayamarb/1min-timer)
-[![codecov](https://codecov.io/gh/wakayamarb/1min-timer/branch/master/graph/badge.svg)](https://codecov.io/gh/wakayamarb/1min-timer)
 
 webView: https://wakayamarb.github.io/1min-timer/
 

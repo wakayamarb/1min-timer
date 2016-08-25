@@ -11,6 +11,7 @@
     "build-linux": "$(npm bin)/electron-packager . 1min --out=./build --platform=linux --arch=x64 --overwrite",
     "build": "npm run build-darwin; npm run build-linux",
     "lint": "$(npm bin)/eslint -c './.eslintrc.json' ./",
+    "cover": "$(npm bin)/babel-node $(npm bin)/isparta cover --report text $(npm bin)/_mocha",
     "test": "$(npm bin)/mocha --compilers js:espower-babel/guess test/**/*.js"
   },
   "author": "KamataRyo",
