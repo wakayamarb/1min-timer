@@ -3,7 +3,6 @@
  * @type {[Function]}
  */
 const Timer = class Timer {
-
   /**
    * constructor
    * @type    {[Function]}
@@ -109,8 +108,8 @@ const Timer = class Timer {
    * stop timer
    * @return {[void]}
    */
-   stop() {
-     this._removeClass(this.display, 'started')
+  stop() {
+    this._removeClass(this.display, 'started')
 
     // timer manipulation
     clearInterval(this.timerId)
@@ -136,7 +135,7 @@ const Timer = class Timer {
    * @param  {[Number]} Optional. value remaining timer value
    * @return {[void]}
    */
-   render(value) {
+  render(value) {
     var sec = value ? value : this.value
 
     // get hour value
@@ -147,9 +146,14 @@ const Timer = class Timer {
     sec -= Math.round(60 * min)
 
     // ZERO-fills
-    hour = hour < 10 ? "0" + hour : "" + hour
-    min  = min  < 10 ? "0" + min  : "" + min
-    sec  = sec  < 10 ? "0" + sec  : "" + sec
-    this.display.innerText = [hour, min, sec].join(":")
+    hour = (hour < 10) ? ('0' + hour) : ('' + hour)
+    min  = (min  < 10) ? ('0' + min ) : ('' + min )
+    sec  = (sec  < 10) ? ('0' + sec ) : ('' + sec )
+    this.display.innerText = [hour, min, sec].join(':')
   }
+}
+
+// CommonJS style export
+if (module) {
+  module.exports(Timer)
 }
