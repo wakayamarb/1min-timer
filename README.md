@@ -1,16 +1,15 @@
-# Electron Application Sample
+# 1Minute Timer, Electron Application Sample
 
 [![Build Status](https://travis-ci.org/wakayamarb/1min-timer.svg?branch=master)](https://travis-ci.org/wakayamarb/1min-timer)
 
-This is a simple repository of desktop application sample made with HTML, CSS and JavaScript based on [Electron](http://electron.atom.io/). Compiled packages are available on Mac, Linux and Windows.
+This is a repository of simple desktop application sample made with HTML, CSS and JavaScript based on [Electron](http://electron.atom.io/). Compiled packages are available on Mac, Linux and Windows.
 
 **Features**
 - BDD style unit testing
-- Scenario based e2e testing
-- Testing on Travis CI
-- Deployment after success
-    - Web preview on Github pages
-    - Releasing binaries on Github
+- Scenario based e2e testing with [Protractor](http://www.protractortest.org/#/)
+- Test and deploy on [Travis CI](https://travis-ci.org/wakayamarb/1min-timer)
+- [Web preview](https://wakayamarb.github.io/1min-timer/) on Github pages
+- [Releasing binaries](https://github.com/wakayamarb/1min-timer/releases) on Github
 
 Application can be previewed on your Chrome, Firefox or other browsers with ES2015 implementation.
 
@@ -21,7 +20,7 @@ https://wakayamarb.github.io/1min-timer/
 ## Install
 
 ```
-$ git clone --depth=1 https://github.com/wakayamarb/1min-timer.git
+$ git clone https://github.com/wakayamarb/1min-timer.git
 $ npm install
 ```
 
