@@ -26,6 +26,10 @@ const getTimerText = element(by.id('display-timer')).getText
  */
 const getTimerTextAgain = getTimerText
 
+/**
+ * Shortcuts
+ * @type {[Promise]}
+ */
 const clickStart = element(by.id('button-start')).click
 const clickStop  = element(by.id('button-stop')).click
 const clickReset = element(by.id('button-reset')).click
@@ -52,7 +56,7 @@ describe('Title ', () => {
 /**
  * A test suit
  */
-describe('Start Button', () => {
+describe('When Start Button clicked', () => {
   it('should start timer', () => {
     let prevTimerText = ''
 
@@ -68,7 +72,7 @@ describe('Start Button', () => {
 /**
  * A test suit
  */
-describe('Stop Button', () => {
+describe('When Stop Button clicked', () => {
   it('should stop timer', () => {
     let prevTimerText = ''
 
@@ -85,7 +89,7 @@ describe('Stop Button', () => {
 /**
  * A test suit
  */
-describe('Buttons', () => {
+describe('Clicking start after stop', () => {
   it('should restart timer', () => {
     let prevTimerText = ''
 
@@ -98,7 +102,12 @@ describe('Buttons', () => {
         nextTimerText.should.not.equal(prevTimerText)
       })
   })
+})
 
+/**
+ * A test suit
+ */
+describe('Clicking reset after start', () => {
   it('should restart timer', () => {
     let initialTimerText = ''
 
