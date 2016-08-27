@@ -2,21 +2,34 @@
  * Mocha Unit test cases
  */
 
-import Timer from '../www/Timer'
+import Timer  from '../www/Timer'
 import should from 'should'
-
 should()
 
+// DOM stub
 const mockAttributes = { class:'' }
 const mockDisplay = {
   getAttribute: (attr) => { return mockAttributes[attr] ? mockAttributes[attr] : '' },
   setAttribute: (attr, value) => { mockAttributes[attr] = value },
 }
-const INITIAL_VALUE = 10 // should be below 60
-const CLASS_COUNTING = 'started'
-const timer = new Timer(INITIAL_VALUE, CLASS_COUNTING , mockDisplay)
 
+// some consts
+const INITIAL = 10 // should be below 60 to simplify test
+const ACTIVE_CLASS = 'started'
 
+/**
+ * testing model
+ * @type {Timer}
+ */
+const timer = new Timer({
+  initial: INITIAL,
+  activeClass: ACTIVE_CLASS,
+  display: mockDisplay
+})
+
+/**
+ * Initialize DOM stub
+ */
 beforeEach(() => {
   mockAttributes.class = ''
   mockDisplay.innerText = ''
@@ -26,9 +39,9 @@ describe('Test of start', () => {
   it('should start countdown', (done) => {
     timer.start()
     setTimeout(() => {
-      timer.value.should.be.below(INITIAL_VALUE)
-      mockAttributes.class.should.equal(CLASS_COUNTING)
-      mockDisplay.innerText.should.not.equal('00:00:' + INITIAL_VALUE)
+      timer.value.should.be.below(INITIAL)
+      mockAttributes.class.should.equal(ACTIVE_CLASS)
+      mockDisplay.innerText.should.not.equal('00:00:' + INITIAL)
       done()
     }, 1200)
   })
@@ -40,11 +53,11 @@ describe('Test of stop', () => {
     setTimeout(() => {
       timer.stop()
       const valueAtStopped = timer.value
-      const displayAtStopped = mockDisplay.innerText
+      const displayedAtStopped = mockDisplay.innerText
       setTimeout(() => {
         timer.value.should.equal(valueAtStopped)
-        mockAttributes.class.should.not.equal(CLASS_COUNTING)
-        mockDisplay.innerText.should.equal(displayAtStopped)
+        mockAttributes.class.should.not.equal(ACTIVE_CLASS)
+        mockDisplay.innerText.should.equal(displayedAtStopped)
         done()
       }, 1200)
     }, 1200)
@@ -57,13 +70,13 @@ describe('Test of restart', () => {
     setTimeout(() => {
       timer.stop()
       const valueAtStopped = timer.value
-      const displayAtStopped = mockDisplay.innerText
+      const displayedAtStopped = mockDisplay.innerText
       setTimeout(() => {
         timer.start()
         setTimeout(() => {
           timer.value.should.be.below(valueAtStopped)
-          mockAttributes.class.should.equal(CLASS_COUNTING)
-          mockDisplay.innerText.should.not.equal(displayAtStopped)
+          mockAttributes.class.should.equal(ACTIVE_CLASS)
+          mockDisplay.innerText.should.not.equal(displayedAtStopped)
           done()
         }, 1200)
       }, 1200)
@@ -76,8 +89,8 @@ describe('Test of reset', () => {
     timer.start()
     setTimeout(() => {
       timer.reset()
-      timer.value.should.equal(INITIAL_VALUE)
-      mockDisplay.innerText.should.equal('00:00:' + INITIAL_VALUE)
+      timer.value.should.equal(INITIAL)
+      mockDisplay.innerText.should.equal('00:00:' + INITIAL)
       done()
     }, 1200)
   })

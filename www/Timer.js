@@ -6,13 +6,13 @@ const Timer = class Timer {
   /**
    * constructor
    * @type    {[Function]}
-   * @param   {[Number]}     initial        Optional. Cooutdown inital value, default=60
-   * @param   {[String]}     classCounting  Class attached when timer counting
-   * @param   {[DOMElement]} display        Nullable. DOM Element which timer will be rendered
-   * @param   {[Function]}   callback       Nullable. Callback function done when timer count finished
+   * @param   {[Number]}     initial      Optional. Cooutdown inital value, default=60
+   * @param   {[String]}     activeClass  Class attached when timer counting
+   * @param   {[DOMElement]} display      Nullable. DOM Element which timer will be rendered
+   * @param   {[Function]}   callback     Nullable. Callback function done when timer count finished
    * @return  {[Function]}
    */
-  constructor(initial, classCounting , display, callback) {
+  constructor({initial, activeClass, display, callback}) {
     // Class member initialization
     /**
      * Cooutdown inital value
@@ -24,7 +24,7 @@ const Timer = class Timer {
      * Class attached when timer counting
      * @type {String}
      */
-    this.classCounting = classCounting ? classCounting : ''
+    this.activeClass = activeClass ? activeClass : ''
 
     /**
      * DOM Element which timer will be rendered
@@ -88,7 +88,7 @@ const Timer = class Timer {
       return
     }
 
-    this._provideClass(this.display, this.classCounting)
+    this._provideClass(this.display, this.activeClass)
 
     // timer manipulation
     this.timerId = setInterval(
@@ -118,7 +118,7 @@ const Timer = class Timer {
    * @return {[void]}
    */
   stop() {
-    this._removeClass(this.display, this.classCounting)
+    this._removeClass(this.display, this.activeClass)
 
     // timer manipulation
     clearInterval(this.timerId)
@@ -145,6 +145,7 @@ const Timer = class Timer {
    * @return {[void]}
    */
   render(value) {
+
     var sec = value ? value : this.value
 
     // get hour value
@@ -162,6 +163,7 @@ const Timer = class Timer {
   }
 }
 
+// CommonJS Export
 if (module) {
   module.exports = Timer
 }

@@ -21,10 +21,13 @@ https://wakayamarb.github.io/1min-timer/
 
 ```
 $ git clone https://github.com/wakayamarb/1min-timer.git
+$ cd 1min-timer
 $ npm install
 ```
 
 ## Test
+
+Unit tests and e2e tests are going to be done.
 
 ```
 $ npm test

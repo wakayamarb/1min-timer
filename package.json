@@ -1,14 +1,14 @@
 {
   "name": "electron-sample-app",
-  "version": "1.0.0",
+  "version": "0.1.1",
   "description": "Desktop application developmental envvironment sample with Electron.",
   "main": "main.js",
   "scripts": {
-    "start": "$(npm bin)/electron ./main.js",
+    "start":  "$(npm bin)/electron ./main.js",
     "build-darwin": "$(npm bin)/electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite --icon=images/icon.icns",
     "build-win32": "$(npm bin)/electron-packager . 1min --out=./build --platform=win32 --arch=x64 --overwrite",
     "build-linux": "$(npm bin)/electron-packager . 1min --out=./build --platform=linux --arch=x64 --overwrite",
-    "build": "echo '[warnning] Win32 build is eliminated due to too long build process.' && npm run build-darwin; npm run build-linux",
+    "build": "echo '[warnning] Win32 build is eliminated from default build settings due to too long build process.' && npm run build-darwin; npm run build-linux",
     "lint": "$(npm bin)/eslint -c './.eslintrc.json' ./",
     "icons": "echo '[warnning] This script depends on MacOS with sketch.' && $(npm bin)/gulp icons",
     "unit-test": "$(npm bin)/mocha --compilers js:babel-register test/**/*_unit.js",

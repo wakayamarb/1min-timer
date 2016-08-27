@@ -3,20 +3,21 @@
  * - GUI (renderer process)
  */
 
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+const {app, BrowserWindow} = require('electron')
 
-let mainWindow;
+let mainWindow
 
-app.on('ready', function(){
+app.on('ready', () => {
   mainWindow = new BrowserWindow({
-    width: 600,
-    height: 300,
-    title: '1min timer'
-  });
-  mainWindow.loadURL('file://' + __dirname + '/www/index.html');
-  mainWindow.on('close', function(){
-    mainWindow = null;
-  });
-});
+    width:  400,
+    height: 250,
+    title:  '1min timer',
+    center: true,
+    resizable: false,
+    frame: false
+  })
+  mainWindow.loadURL(`file://${__dirname}/www/index.html`)
+  mainWindow.on('close', () => {
+    mainWindow = null
+  })
+})
