@@ -1,0 +1,49 @@
+{
+  "name": "electron-sample-app",
+  "version": "0.1.1",
+  "description": "Desktop application developmental envvironment sample with Electron.",
+  "main": "main.js",
+  "scripts": {
+    "start":  "electron ./main.js",
+    "build-darwin": "electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite --icon=images/icon.icns",
+    "build-win32": "electron-packager . 1min --out=./build --platform=win32 --arch=x64 --overwrite",
+    "build-linux": "electron-packager . 1min --out=./build --platform=linux --arch=x64 --overwrite",
+    "build": "echo '[warnning] Win32 build is eliminated from default build settings due to too long build process.' && npm run build-darwin; npm run build-linux",
+    "lint": "eslint -c './.eslintrc.json' ./",
+    "icons": "echo '[warnning] This script depends on MacOS with sketch.' && gulp icons",
+    "unit-test": "mocha --compilers js:babel-register test/**/*_unit.js",
+    "webdriver-update": "webdriver-manager update",
+    "e2e-test": "protractor protractor.conf.js;",
+    "test": "npm run unit-test && npm run e2e-test"
+  },
+  "author": "KamataRyo",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-plugin-espower": "^2.3.1",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-register": "^6.7.2",
+    "chromedriver": "^2.23.1",
+    "electron-packager": "^8.3.0",
+    "electron-prebuilt": "^1.2.7",
+    "eslint": "^3.3.1",
+    "gulp": "^3.9.1",
+    "gulp-iconutil": "^1.2.0",
+    "gulp-sketch": "^1.0.3",
+    "mocha": "^3.0.2",
+    "protractor": "^4.0.4",
+    "should": "^11.1.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wakayamarb/1min-timer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wakayamarb/1min-timer/issues"
+  },
+  "homepage": "https://github.com/wakayamarb/1min-timer#readme"
+}

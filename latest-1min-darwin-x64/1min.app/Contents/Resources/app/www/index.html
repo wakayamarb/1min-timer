@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>1Minute Timer</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body class="body">
+    <main class="main container">
+      <h1 class="title">1 Minute Timer</h1>
+      <nav class="buttons">
+        <button id="start" class="button button-start">start</button>
+        <button id="stop" class="button button-stop">stop</button>
+        <button id="reset" class="button button-reset">reset</button>
+      </nav><!--.buttons-->
+      <p id="display" class="timer"></p>
+    </main><!--.main .container-->
+    <script src="./Timer.js"></script><!--Load Timer Model-->
+    <script>
+      /**
+       * Model-View bining
+       */
+
+      // grab DOM content
+      const start   = document.getElementById('start')
+      const stop    = document.getElementById('stop')
+      const reset   = document.getElementById('reset')
+      const display = document.getElementById('display')
+
+      /**
+       * Timer model instance
+       * @type {Timer}
+       */
+      const timer = new Timer({
+        initial: 60,
+        activeClass: 'started',
+        display,
+        callback: () => alert("finish")
+      })
+
+      // Bind timer model to view
+      // fix `this` context by wrapping anonymous function
+      start.addEventListener('click', () => timer.start())
+      stop.addEventListener('click', () => timer.stop())
+      reset.addEventListener('click', () => timer.reset())
+    </script>
+  </body>
+</html>

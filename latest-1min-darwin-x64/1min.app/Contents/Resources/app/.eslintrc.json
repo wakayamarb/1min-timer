@@ -1,0 +1,28 @@
+{
+    "env": {
+        "node": true,
+        "es6": true,
+        "commonjs": true,
+        "mocha": true,
+        "browser": true,
+        "protractor": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "arrow-spacing": 2,
+        "no-dupe-args": 1,
+        "no-console":0,
+        "no-const-assign": 2,
+        "no-unused-vars": 1,
+        "indent": [2, 2],
+        "linebreak-style": [2, "unix"],
+        "quotes": [2, "single"]
+    }
+}

@@ -1,0 +1,56 @@
+.body {
+  background-color: white;
+  font-family: sans-serif;
+}
+
+.container {
+  padding: 1em;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.button {
+  width: 75px;
+  height: 75px;
+  border-radius: 37.5px;
+  background-color: white;
+  border: 1px solid #999;
+  text-transform: uppercase;
+  color: #999;
+  font-size: 1em;
+  text-align: center;
+  margin: .25em;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button:focus {
+  outline: none;
+  background-color: #999;
+  color: white;
+  font-weight: bold;
+}
+
+.timer {
+  text-align: center;
+  margin: 10px;
+  font-size: 60px;
+}
+
+.timer.started {
+  opacity: 1;
+}
+
+.timer:not(.started) {
+  opacity: .5;
+}
