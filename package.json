@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start":  "electron ./main.js",
-    "build-darwin": "electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite --icon=images/icon.icns",
+    "build-darwin": "electron-packager . 1min --out=./build --platform=darwin --arch=x64 --overwrite",
     "build-win32": "electron-packager . 1min --out=./build --platform=win32 --arch=x64 --overwrite",
     "build-linux": "electron-packager . 1min --out=./build --platform=linux --arch=x64 --overwrite",
     "build": "echo '[warnning] Win32 build is eliminated from default build settings due to too long build process.' && npm run build-darwin; npm run build-linux",
